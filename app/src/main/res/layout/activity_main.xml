@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_backg"
+    android:orientation="vertical"
+    tools:context="MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="87dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_margin="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="right"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/main_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:id="@+id/profile_btn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:gravity="right"
+                    android:background="@drawable/proflie_btn" />
+
+                <TextView
+                    android:layout_margin="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="left"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textSize="20dp"
+                    android:id="@+id/main_blood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textSize="20dp"
+                    android:id="@+id/main_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textSize="20dp"
+                    android:id="@+id/main_height"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/btn_connected"
+        android:layout_width="wrap_content"
+        android:layout_height="170dp"
+        android:background="@drawable/notconnected"
+        android:visibility="visible" />
+
+        <Button
+        android:id="@+id/btn_connect"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="170dp"
+        android:background="@drawable/connected" />
+
+        <Button
+            android:visibility="gone"
+            android:background="@drawable/senssing_btn"
+            android:id="@+id/sensing_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="170dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/gps_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="140dp"
+        android:background="@drawable/gps2" />
+
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/setting_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="140dp"
+        android:background="@drawable/setting" />
+
+</LinearLayout>
+
+

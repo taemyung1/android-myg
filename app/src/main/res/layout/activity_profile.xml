@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/profile_backg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="right"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_margin="10dp"
+            android:id="@+id/finish_btn3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/backbtn"
+            />
+
+    </LinearLayout>
+
+
+    <TabHost
+        android:id="@+id/tabHost1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_margin="27dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- TabWidget의 id값이 반드시 "tabs"로 지정되어야 함. -->
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#044aae" />
+
+            <!-- FrameLayout의 id값이 반드시 "tabcontent"로 지정되어야 함. -->
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- 첫 번째 페이지. content1 -->
+                <LinearLayout
+                    android:id="@+id/content1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:textSize="20sp"
+                        android:textColor="#000000"
+                        android:gravity="center"
+                        android:id="@+id/profile_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:textSize="20sp"
+                        android:textColor="#000000"
+                        android:gravity="center"
+                        android:id="@+id/profile_blood"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:textSize="20sp"
+                        android:textColor="#000000"
+                        android:gravity="center"
+                        android:id="@+id/profile_age"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:textSize="20sp"
+                        android:textColor="#000000"
+                        android:gravity="center"
+                        android:id="@+id/profile_stature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:textSize="20sp"
+                        android:textColor="#000000"
+                        android:gravity="center"
+                        android:id="@+id/profile_weight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:textSize="20sp"
+                        android:textColor="#000000"
+                        android:gravity="center"
+                        android:id="@+id/profile_history"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:text="취 소"
+                            android:id="@+id/finish_btn2"
+                            android:layout_gravity="bottom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:text="추 가"
+                            android:id="@+id/user_in_btn"
+                            android:layout_gravity="bottom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+                <!-- 두 번째 페이지. content2 -->
+                <TableLayout
+                    android:id="@+id/content2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TableRow>
+                    <TextView
+                        android:layout_weight="1"
+                        android:textSize="20sp"
+                        android:textColor="#000000"
+                        android:gravity="center"
+                        android:id="@+id/sos_profile1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                        <Button
+                            android:text="수 정"
+                            android:visibility="gone"
+                            android:id="@+id/sos_update_btn1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:text="삭 제"
+                            android:visibility="gone"
+                            android:id="@+id/sos_del_btn1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+
+                    </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_weight="1"
+                        android:textSize="20sp"
+                        android:textColor="#000000"
+                        android:gravity="center"
+                        android:id="@+id/sos_profile2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:text="수 정"
+                        android:visibility="gone"
+                        android:id="@+id/sos_update_btn2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:text="삭 제"
+                        android:visibility="gone"
+                        android:id="@+id/sos_del_btn2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_weight="1"
+                        android:textSize="20sp"
+                        android:textColor="#000000"
+                        android:gravity="center"
+                        android:id="@+id/sos_profile3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:text="수 정"
+                        android:visibility="gone"
+                        android:id="@+id/sos_update_btn3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:text="삭 제"
+                        android:visibility="gone"
+                        android:id="@+id/sos_del_btn3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </TableRow>
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:text="취 소"
+                            android:id="@+id/finish_btn1"
+                            android:layout_gravity="bottom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:text="추 가"
+                            android:id="@+id/sos_in_btn"
+                            android:layout_gravity="bottom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/update_btn"
+                        android:text="수정"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:id="@+id/sos_del_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="삭 제" />
+
+                    <Button
+                        android:id="@+id/update_end_btn"
+                        android:text="end"
+                        android:visibility="invisible"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </TableLayout>
+            </FrameLayout>
+        </LinearLayout>
+
+
+    </TabHost>
+
+
+</LinearLayout>

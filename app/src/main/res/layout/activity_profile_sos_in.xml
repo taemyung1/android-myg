@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/proflie_pul_backg"
+    android:stretchColumns="0,1,2,3"
+    android:orientation="vertical"
+    android:padding="60dp">
+
+
+    <!-- 이름 적는 부분-->
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp">
+
+        <TextView
+            android:textColor="#000000"
+            android:id="@+id/input_name1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="이름 : " />
+
+        <EditText
+            android:textColor="#000000"
+            android:id="@+id/input_name2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_span="3"
+            android:singleLine="true"/>
+    </TableRow>
+
+    <!--전화번호 적는 부분-->
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:textColor="#000000"
+            android:id="@+id/input_phone1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="전화 번호 :"/>
+
+        <EditText
+            android:textColor="#000000"
+            android:id="@+id/input_phone2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="phone"
+            android:maxLength="16"/>
+    </TableRow>
+
+
+
+    <!--지인 관계 적는 부분 -->
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:textColor="#000000"
+            android:id="@+id/input_relation1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:singleLine="true"
+            android:text="관계 : " />
+
+        <EditText
+            android:textColor="#000000"
+            android:id="@+id/input_relation2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_span="3"
+            android:singleLine="true"
+            android:maxLength="15"/>
+    </TableRow>
+
+    <!--확인, 취소 버튼 부분-->
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:text="취소" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="확인"
+            android:layout_column="2"/>
+    </TableRow>
+
+
+
+</TableLayout>
