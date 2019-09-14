@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="20dp">
     <TextView
         android:id="@+id/tvBluetoothStatus"
         android:layout_width="170dp"
@@ -23,15 +22,6 @@
         android:text="연결하기"
         app:layout_constraintStart_toStartOf="@+id/tvBluetoothStatus"
         app:layout_constraintTop_toBottomOf="@+id/tvBluetoothStatus" />
-
-    <TextView
-        android:id="@+id/tvReceiveData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Receive"
-        app:layout_constraintStart_toStartOf="@+id/btnSendData"
-        app:layout_constraintTop_toBottomOf="@+id/btnSendData" />
 
     <Button
         android:id="@+id/btnSendData"
@@ -53,6 +43,14 @@
         android:text="Send Data"
         app:layout_constraintStart_toEndOf="@+id/btnSendData"
         app:layout_constraintTop_toTopOf="@+id/btnSendData" />
+    <TextView
+        android:id="@+id/tvReceiveData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Receive"
+        app:layout_constraintStart_toStartOf="@+id/btnSendData"
+        app:layout_constraintTop_toBottomOf="@+id/btnSendData" />
 
 
 </LinearLayout>

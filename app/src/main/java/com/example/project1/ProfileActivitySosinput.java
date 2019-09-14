@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,10 +37,13 @@ public class ProfileActivitySosinput  extends AppCompatActivity {
                 String relation = sos_input_relation.getText().toString();
                 String a = sos_input_phone.getText().toString(); int phone = Integer.parseInt(a);
 
-                dbservice.sosIn(name, phone, relation);
-                dbservice.close();
-                finish();
-
+                try {
+                    dbservice.sosIn(name, phone, relation);
+                    dbservice.close();
+                    finish();
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(), "빈칸 없이 입력해주세요",Toast.LENGTH_SHORT);
+                }
             }
         });
         finish_btn1.setOnClickListener(new View.OnClickListener() {

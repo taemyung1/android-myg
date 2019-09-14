@@ -101,9 +101,11 @@
         android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="170dp"
+            android:layout_weight="0.5"
         android:background="@drawable/connected" />
 
         <Button
+            android:layout_weight="0.5"
             android:visibility="gone"
             android:background="@drawable/senssing_btn"
             android:id="@+id/sensing_btn"

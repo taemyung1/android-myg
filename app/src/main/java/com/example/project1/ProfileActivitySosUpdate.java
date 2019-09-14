@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -83,11 +84,13 @@ public class ProfileActivitySosUpdate extends AppCompatActivity {
                 String name = sos_update_name.getText().toString();
                 String relation = sos_update_relation.getText().toString();
                 String a = sos_update_phone.getText().toString(); int phone = Integer.parseInt(a);
-
-                dbservice.sosupdate(name, phone, relation);
-                dbservice.close();
-                finish();
-
+                try {
+                    dbservice.sosupdate(name, phone, relation);
+                    dbservice.close();
+                    finish();
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(), "빈칸 없이 입력해주세요",Toast.LENGTH_SHORT);
+                }
             }
         });
 

@@ -55,10 +55,12 @@ public class MainActivity extends AppCompatActivity {
             if (btAdater.isEnabled()) {
                 bt_off.setVisibility(View.VISIBLE);
                 bt_on.setVisibility(View.GONE);
+                sensing_btn.setVisibility(View.VISIBLE);
             }
             else {
                 bt_off.setVisibility(View.GONE);
                 bt_on.setVisibility(View.VISIBLE);
+                sensing_btn.setVisibility(View.GONE);
 
             }
         }

@@ -43,6 +43,7 @@ public class ProfileActivityinput extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 if (input_name.getText().length() <= 0 || input_blood.getText().length() <= 0 ||
                 input_age.getText().length() <= 0 || input_stature.getText().length() <= 0 || input_weight.getText().length() <= 0)
                 {
@@ -65,7 +66,7 @@ public class ProfileActivityinput extends AppCompatActivity {
                         dbservice.userIn(name1, blood, age, stature, weight, history);
                         finish();
                     }catch (Exception e){
-
+                        Toast.makeText(getApplicationContext(), "빈칸 없이 입력해주세요",Toast.LENGTH_SHORT);
                     }
 
 

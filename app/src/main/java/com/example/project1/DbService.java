@@ -28,10 +28,10 @@ public class DbService {
         //처음 테이블 생성
         public void onCreate(SQLiteDatabase db) {
                     // user 테이블
-                    db.execSQL("CREATE TABLE IF NOT EXISTS USER (NAME CHAR(20) PRIMARY KEY, BLOODTYPE CHAR(20),AGE INTEGER, " +
-                            "HEIGHT INTEGER, WEIGHT INTEGER, HISTORYOFOFRATION CHAR(20));");
+                    db.execSQL("CREATE TABLE IF NOT EXISTS USER (NAME CHAR(20) PRIMARY KEY, BLOODTYPE CHAR(20) not null,AGE INTEGER not null, " +
+                            "HEIGHT INTEGER not null, WEIGHT INTEGER not null, HISTORYOFOFRATION CHAR(20));");
                     //  sos 테이블
-                    db.execSQL("CREATE TABLE IF NOT EXISTS SOSUSER ( SOSNAME CHAR(20), PHONENEMBER INTEGER, RELATION CHAR(20))");
+                    db.execSQL("CREATE TABLE IF NOT EXISTS SOSUSER ( SOSNAME CHAR(20) PRIMARY KEY, PHONENEMBER INTEGER not null, RELATION CHAR(20) not null)");
                     //  SOS 타이머 테이블
                     db.execSQL("CREATE TABLE IF NOT EXISTS SOSTIMER (SECOND INTEGER)");
 
