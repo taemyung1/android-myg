@@ -25,7 +25,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyC0E0gzIEXwuOYCs6w1nPYKQSMElu7uYOA" />
 
-
+        <activity android:name=".Shock_detection_v"/>
+        <activity android:name=".Shock_detection"/>
         <activity android:name=".ProfileActivity"/>
         <activity android:name=".ProfileActivityinput"/>
         <activity android:name=".ProfileActivitySosinput"/>

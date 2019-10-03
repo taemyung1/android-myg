@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="20dp">
+    android:layout_margin="20dp"
+    android:background="@drawable/gradient_list"
+    android:id="@+id/layout">
     <TextView
         android:id="@+id/tvBluetoothStatus"
         android:layout_width="170dp"
         android:layout_height="20dp"
         android:layout_marginTop="10dp"
-        android:text="status"
-        />
+        android:text="status" />
 
     <Button
         android:id="@+id/btnConnect"
@@ -23,12 +24,13 @@
         app:layout_constraintStart_toStartOf="@+id/tvBluetoothStatus"
         app:layout_constraintTop_toBottomOf="@+id/tvBluetoothStatus" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btnSendData"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="170dp"
         android:layout_marginTop="10dp"
         android:text="전송"
+        android:background="@drawable/device"
         app:layout_constraintStart_toStartOf="@+id/btnConnect"
         app:layout_constraintTop_toBottomOf="@+id/btnConnect" />
 
@@ -49,8 +51,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Receive"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/btnSendData"
         app:layout_constraintTop_toBottomOf="@+id/btnSendData" />
-
 
 </LinearLayout>

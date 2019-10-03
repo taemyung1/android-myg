@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     BluetoothAdapter mBluetoothAdapter;
 
 
-    Button bt_on, bt_off, setting_btn, profile_btn, sensing_btn, gps_btn;
+    Button bt_on, bt_off, setting_btn, profile_btn, sensing_btn, gps_btn, test1;
     TextView main_name, main_blood, main_age, main_height;
     private static final int REQUEST_ENABLE_BT = 2;
 
@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        test1 = (Button) findViewById(R.id.test1);
         gps_btn = (Button) findViewById(R.id.gps_btn);
         sensing_btn = (Button) findViewById(R.id.sensing_btn);
         profile_btn = (Button) findViewById(R.id.profile_btn);
@@ -84,6 +85,14 @@ public class MainActivity extends AppCompatActivity {
         iCursor.close();
         dbservice.close();
 
+        // test1
+        test1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Shock_detection.class);
+                startActivity(intent);
+            }
+        });
         //블루투스 켜기 버튼
         bt_on.setOnClickListener(new View.OnClickListener() {
             @Override

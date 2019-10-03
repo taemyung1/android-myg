@@ -1,21 +1,28 @@
 package com.example.project1;
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,7 +40,8 @@ public class SensingActivity extends AppCompatActivity {
 
     public bluetoothService bthService;
     TextView mTvBluetoothStatus, mTvReceiveData, mTvSendData;
-    Button mBtnConnect, mBtnSendData;
+    Button mBtnConnect;
+    ImageButton mBtnSendData;
 
     //블루투스 모듈 사용을 위한 오브젝트
     BluetoothAdapter mBluetoothAdapter;
@@ -51,16 +59,43 @@ public class SensingActivity extends AppCompatActivity {
     final static UUID BT_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
 
+    public class MainActivity extends AppCompatActivity {
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+
+            //수정 부분
+
+            @SuppressLint("WrongViewCast") ConstraintLayout constraintLayout = findViewById(R.id.layout);
+            AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
+            animationDrawable.setEnterFadeDuration(2000);
+            animationDrawable.setExitFadeDuration(4000);
+            animationDrawable.start();
+
+            //요기까지
+
+        }
+    }
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sensing);
 
+
+
+
         mTvBluetoothStatus = (TextView)findViewById(R.id.tvBluetoothStatus);
         mTvReceiveData = (TextView)findViewById(R.id.tvReceiveData);
         mTvSendData =  (EditText) findViewById(R.id.tvSendData);
         mBtnConnect = (Button)findViewById(R.id.btnConnect);
-        mBtnSendData = (Button)findViewById(R.id.btnSendData);
+        mBtnSendData = (ImageButton) findViewById(R.id.btnSendData);
+
 
         //해당 장치가 블루투스 기능을 지원하는지 알아오는 메소드
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -84,14 +119,22 @@ public class SensingActivity extends AppCompatActivity {
 
         mBluetoothHandler = new Handler(){
             public void handleMessage(android.os.Message msg){
-                if(msg.what == BT_MESSAGE_READ){
-                    String readMessage = null;
+                if (msg.what == BT_MESSAGE_READ) {
+                    String sensor = null;
+                    String str1 = mTvReceiveData.getText().toString();
                     try {
-                        readMessage = new String((byte[]) msg.obj, "UTF-8");
+                        //자이로 가속도 센서값
+                        sensor = new String((byte[]) msg.obj, "UTF-8");
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     }
-                    mTvReceiveData.setText(readMessage);
+                    mTvReceiveData.setText(sensor);
+                    if(str1.trim().equals("Warning")) {
+                        Intent intent = new Intent(getApplicationContext(),
+                                Shock_detection.class);
+                        startActivity(intent);
+                        mTvReceiveData.setText(null);
+                    }
                 }
             }
         };

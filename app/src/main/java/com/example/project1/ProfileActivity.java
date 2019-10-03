@@ -115,7 +115,7 @@ public class ProfileActivity extends AppCompatActivity {
                 break;
             }
         }else{
-            profile_blood.setText("사용자 프로필 먼저 등록해 주세요");
+           // profile_blood.setText("사용자 프로필 먼저 등록해 주세요");
         }
 
         iCursor.close();

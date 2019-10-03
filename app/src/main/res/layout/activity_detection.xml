@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Shock_detection"
+    android:background="#ffff4444">
+
+
+        <!--SOS 이미지 삽입 부분-->
+
+
+    <ImageView
+        android:background="@drawable/sos1"
+        android:layout_width="1000px"
+        android:layout_height="1000px"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="163dp"
+        android:layout_marginBottom="40dp" />
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="78dp"
+        android:text="충격이 감지 되었습니다!"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="30dp" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="197dp"
+        android:text="안전하다면 두번 누르세요 "
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="20dp" />
+
+
+
+<!--    두번 터치하는 부분 (큰 버튼)-->
+
+
+    <Button
+        android:id="@+id/btnbigbutton"
+        android:layout_width="match_parent"
+        android:layout_height="490dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="59dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="192dp"
+        android:background="#00ff0000" />
+
+
+
+    <!--    카운트 다운 타이머 부분-->
+
+    <TextView
+        android:id="@+id/countdown_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="276dp"
+        android:text="00:00"
+        android:textSize="60sp"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"/>
+
+
+
+
+
+
+
+<!--    하단 테스트 버튼들-->
+
+    <Button
+        android:id="@+id/countdown_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="49dp"
+        android:text="시작" />
+
+
+
+</RelativeLayout>
