@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Shock_detection extends AppCompatActivity {
 
     private TextView  countdownText;
-    private Button   countdownButton, btnbigbutton;
+    private Button  btnbigbutton;
     private long btnPressTime = 0;
 
     private CountDownTimer countDownTimer;
@@ -26,20 +26,9 @@ public class Shock_detection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detection);
 
-
-
         countdownText = findViewById(R.id.countdown_text);
-        countdownButton = findViewById(R.id.countdown_button);
         btnbigbutton = findViewById(R.id.btnbigbutton);
-
         startTimer();
-
-        countdownButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startStop();
-            }
-        });
 
 btnbigbutton.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -83,8 +72,6 @@ btnbigbutton.setOnClickListener(new View.OnClickListener() {
 
             }
         }.start();
-
-        countdownButton.setText("PAUSE");
         timerRunning = true;
     }
 
@@ -106,7 +93,7 @@ btnbigbutton.setOnClickListener(new View.OnClickListener() {
         if (seconds < 10) timeLeftText += "0";
         timeLeftText += seconds;
         Log.d("1", "updateTimer: 1");
-        //        Intent() 화면 넘기기
+
         countdownText.setText(timeLeftText);
         if (timeLeftText.equals("0:00")){
             Intent intent = new Intent(getApplicationContext(), Shock_detection_v.class);
@@ -114,5 +101,4 @@ btnbigbutton.setOnClickListener(new View.OnClickListener() {
         }
     }
 
-    //더블 터치로 이전 화면 돌아가기
 }
