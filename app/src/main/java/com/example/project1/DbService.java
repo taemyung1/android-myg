@@ -31,7 +31,7 @@ public class DbService {
                     db.execSQL("CREATE TABLE IF NOT EXISTS USER (NAME CHAR(20) PRIMARY KEY, BLOODTYPE CHAR(20) not null,AGE INTEGER not null, " +
                             "HEIGHT INTEGER not null, WEIGHT INTEGER not null, HISTORYOFOFRATION CHAR(20));");
                     //  sos 테이블
-                    db.execSQL("CREATE TABLE IF NOT EXISTS SOSUSER ( SOSNAME CHAR(20) PRIMARY KEY, PHONENEMBER INTEGER not null, RELATION CHAR(20) not null)");
+                    db.execSQL("CREATE TABLE IF NOT EXISTS SOSUSER ( SOSNAME CHAR(20) PRIMARY KEY, PHONENEMBER CHAR(30) not null, RELATION CHAR(20) not null)");
                     //  SOS 타이머 테이블
                     db.execSQL("CREATE TABLE IF NOT EXISTS SOSTIMER (SECOND INTEGER)");
 
@@ -77,7 +77,7 @@ public class DbService {
     }
 
     //sos 연락망 검색
-    public Cursor sossetlected(int a){
+    public Cursor sossetlected(){
         if (sqliteDB != null) {
             Cursor c = sqliteDB.rawQuery("SELECT * FROM SOSUSER ORDER BY SOSNAME ASC", null);
             return c;

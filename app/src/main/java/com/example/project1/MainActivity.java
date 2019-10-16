@@ -1,16 +1,22 @@
 package com.example.project1;
 
+import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import static com.example.project1.bluetoothService.BT_REQUEST_ENABLE;
 
@@ -27,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     BluetoothAdapter mBluetoothAdapter;
 
 
+    private static final int PERMISSION_REQUEST_CODE = 1;
     Button bt_on, bt_off, setting_btn, profile_btn, sensing_btn, gps_btn, test1;
     TextView main_name, main_blood, main_age, main_height;
     private static final int REQUEST_ENABLE_BT = 2;
@@ -48,6 +55,25 @@ public class MainActivity extends AppCompatActivity {
         bt_on = (Button) findViewById(R.id.btn_connected);
         bt_off = (Button) findViewById(R.id.btn_connect);
         btAdater = BluetoothAdapter.getDefaultAdapter();
+        //gps
+        if ((Build.VERSION.SDK_INT >= 23) &&
+                (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)) {
+            ActivityCompat.requestPermissions( MainActivity.this, new String[] { android.Manifest.permission.ACCESS_FINE_LOCATION },
+                    0 );
+        }
+        //sms
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+
+            if (checkSelfPermission(Manifest.permission.SEND_SMS)
+                    == PackageManager.PERMISSION_DENIED) {
+
+                Log.d("permission", "permission denied to SEND_SMS - requesting it");
+                String[] permissions = {Manifest.permission.SEND_SMS};
+
+                requestPermissions(permissions, PERMISSION_REQUEST_CODE);
+
+            }
+        }
 
         if(btAdater == null) {
             Toast.makeText(getApplicationContext(), "블루투스를 지원하지 않는 기기입니다.", Toast.LENGTH_LONG).show();
@@ -89,8 +115,8 @@ public class MainActivity extends AppCompatActivity {
         test1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Shock_detection.class);
-                startActivity(intent);
+                  Intent intent = new Intent(getApplicationContext(), Shock_detection.class);
+                  startActivity(intent);
             }
         });
         //블루투스 켜기 버튼
@@ -180,6 +206,26 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
+    }
+    public void mainselect(){
+        dbservice.open();
+
+
+        Cursor iCursor = dbservice.usersetlected();
+        if (iCursor.getCount() > 0){
+            while (iCursor.moveToNext()) {
+                main_name.setText(String.format("   %s", iCursor.getString(0)));
+                main_blood.setText(String.format("   혈액형: %s", iCursor.getString(1)));
+                main_age.setText(String.format(" 나이: %s", iCursor.getString(2)));
+                main_height.setText(String.format(" 키: %s", iCursor.getString(3)));
+            }
+        }else{
+            main_blood.append("사용자 프로필 먼저 등록해 주세요");
+        }
+
+        iCursor.close();
+        dbservice.close();
+
     }
 }
 

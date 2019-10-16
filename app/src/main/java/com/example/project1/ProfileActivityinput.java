@@ -1,6 +1,7 @@
 package com.example.project1;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,7 +15,8 @@ public class ProfileActivityinput extends AppCompatActivity {
 
     // db
     DbService dbservice;
-
+    MainActivity mainActivity;
+    ProfileActivity profileActivity;
     Button finish_btn1, finish_btn2, input_btn;
     TextView input_name, input_blood, input_age, input_stature, input_weight, input_history;
 
@@ -64,6 +66,7 @@ public class ProfileActivityinput extends AppCompatActivity {
 
                     try{
                         dbservice.userIn(name1, blood, age, stature, weight, history);
+                    //    profileActivity.profileme();
                         finish();
                     }catch (Exception e){
                         Toast.makeText(getApplicationContext(), "빈칸 없이 입력해주세요",Toast.LENGTH_SHORT);

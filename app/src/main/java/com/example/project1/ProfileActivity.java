@@ -89,9 +89,9 @@ public class ProfileActivity extends AppCompatActivity {
         ts2.setContent(R.id.content2) ;
         ts2.setIndicator("SOS") ;
         tabHost1.addTab(ts2) ;
-        int a = 1;
+
         final String s_name1, s_name2, s_name3, s_phone1, s_phone2, s_phone3, s_rethion1, s_rethion2, s_rethion3;
-        Cursor iCursor2 = dbservice.sossetlected(a);
+        Cursor iCursor2 = dbservice.sossetlected();
         if (iCursor2.getCount() > 0){
             while (iCursor2.moveToNext()) {
                 s_name1 = iCursor2.getString(0);
@@ -189,9 +189,7 @@ public class ProfileActivity extends AppCompatActivity {
                 dig.setPositiveButton("삭제", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
-                        int a = 1;
-                        Cursor iCursor3 = dbservice.sossetlected(a);
+                        Cursor iCursor3 = dbservice.sossetlected();
                         iCursor3.moveToFirst();
                         String sosname1 = iCursor3.getString(0);
                         dbservice.delsosuser(sosname1);
@@ -212,11 +210,11 @@ public class ProfileActivity extends AppCompatActivity {
                 AlertDialog.Builder dig = new AlertDialog.Builder(ProfileActivity.this);
                 dig.setMessage("sos 이용자 2를 삭제하시겠습니까?");
                 // 확인
-                final int a = 2;
+
                 dig.setPositiveButton("삭제", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Cursor iCursor3 = dbservice.sossetlected(a);
+                        Cursor iCursor3 = dbservice.sossetlected();
 
                             iCursor3.moveToNext(); iCursor3.moveToNext();
                                 String sosname1 = iCursor3.getString(0);
@@ -242,8 +240,7 @@ public class ProfileActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        int a = 3;
-                        Cursor iCursor3 = dbservice.sossetlected(a);
+                        Cursor iCursor3 = dbservice.sossetlected();
                         iCursor3.moveToLast();
                         String sosname1 = iCursor3.getString(0);
                         dbservice.delsosuser(sosname1);
@@ -328,4 +325,24 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
+    public void profileme(){
+        dbservice = new DbService(this);
+        dbservice.open();
+
+        final Cursor iCursor = dbservice.usersetlected();
+        if (iCursor.getCount() > 0){
+            while (iCursor.moveToNext()) {
+                profile_name.setText(String.format("이름 :   %s", iCursor.getString(0)));
+                profile_blood.setText(String.format("혈액형 :   %s", iCursor.getString(1)));
+                profile_age.setText(String.format("나이 :   %s", iCursor.getString(2)));
+                profile_stature.setText(String.format("키 :   %s", iCursor.getString(3)));
+                profile_weight.setText(String.format("몸무게 :  %s", iCursor.getString(4)));
+                profile_history.setText(String.format("특이사항 :   %s", iCursor.getString(5)));
+            }
+        }else{
+            // profile_blood.setText("사용자 프로필 먼저 등록해 주세요");
+        }
+        iCursor.close();
+        dbservice.close();
+    }
 }

@@ -38,7 +38,7 @@ public class ProfileActivitySosinput  extends AppCompatActivity {
                 String a = sos_input_phone.getText().toString(); int phone = Integer.parseInt(a);
 
                 try {
-                    dbservice.sosIn(name, phone, relation);
+                    dbservice.sosIn(name, 0+phone, relation);
                     dbservice.close();
                     finish();
                 }catch (Exception e){

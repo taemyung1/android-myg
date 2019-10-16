@@ -36,8 +36,7 @@ public class ProfileActivitySosUpdate extends AppCompatActivity {
         count = getintent.getExtras().getInt("count");
         dbservice = new DbService(this);
         dbservice.open();
-        int a = 0;
-        Cursor iCursor2 = dbservice.sossetlected(a);
+        Cursor iCursor2 = dbservice.sossetlected();
 
         if( count > 1){
             if (count > 2){
