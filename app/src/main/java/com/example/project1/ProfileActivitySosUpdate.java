@@ -85,6 +85,7 @@ public class ProfileActivitySosUpdate extends AppCompatActivity {
                 String a = sos_update_phone.getText().toString(); int phone = Integer.parseInt(a);
                 try {
                     dbservice.sosupdate(name, phone, relation);
+                    ProfileActivity.profile_reclick.callOnClick();
                     dbservice.close();
                     finish();
                 }catch (Exception e){

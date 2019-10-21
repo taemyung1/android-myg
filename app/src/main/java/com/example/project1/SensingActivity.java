@@ -88,11 +88,9 @@ public class SensingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sensing);
 
 
-
-
-        mTvBluetoothStatus = (TextView)findViewById(R.id.tvBluetoothStatus);
+        // mTvBluetoothStatus = (TextView)findViewById(R.id.tvBluetoothStatus);
         mTvReceiveData = (TextView)findViewById(R.id.tvReceiveData);
-        mTvSendData =  (EditText) findViewById(R.id.tvSendData);
+        // mTvSendData =  (EditText) findViewById(R.id.tvSendData);
         mBtnConnect = (Button)findViewById(R.id.btnConnect);
         mBtnSendData = (ImageButton) findViewById(R.id.btnSendData);
 
@@ -101,13 +99,13 @@ public class SensingActivity extends AppCompatActivity {
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         //블루투스 통신 , 센서값 받기 시작 해야함
-        mBtnConnect.setOnClickListener(new Button.OnClickListener() {
+        mBtnSendData.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mListPairedDevices();
             }
         });
-        mBtnSendData.setOnClickListener(new Button.OnClickListener() {
+       /* mBtnSendData.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(mThreadConnectedBluetooth != null) {
@@ -115,7 +113,7 @@ public class SensingActivity extends AppCompatActivity {
                     mTvSendData.setText("");
                 }
             }
-        });
+        });*/
 
         mBluetoothHandler = new Handler(){
             public void handleMessage(android.os.Message msg){

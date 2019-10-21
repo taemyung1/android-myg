@@ -17,6 +17,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     // db
     private DbService dbservice;
+    public static Button profile_reclick;
 
     Button finish_btn3, finish_btn2, finish_btn1, user_in_btn, sos_in_btn, update_btn,
     sos_update_btn1, sos_update_btn2, sos_update_btn3, update_end_btn, sos_del_btn,
@@ -28,7 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile );
-
+        profile_reclick = (Button) findViewById(R.id.reClick);
         sos_del_btn1 = (Button) findViewById(R.id.sos_del_btn1);
         sos_del_btn2 = (Button)findViewById(R.id.sos_del_btn2);
         sos_del_btn3 = (Button) findViewById(R.id.sos_del_btn3);
@@ -189,13 +190,16 @@ public class ProfileActivity extends AppCompatActivity {
                 dig.setPositiveButton("삭제", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        dbservice.open();
                         Cursor iCursor3 = dbservice.sossetlected();
                         iCursor3.moveToFirst();
                         String sosname1 = iCursor3.getString(0);
                         dbservice.delsosuser(sosname1);
 
                         iCursor3.close();
+                        profile_reclick.callOnClick();
                         dbservice.close();
+                        update_end_btn.callOnClick();
                     }
                 });
                 //취소
@@ -214,6 +218,7 @@ public class ProfileActivity extends AppCompatActivity {
                 dig.setPositiveButton("삭제", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        dbservice.open();
                         Cursor iCursor3 = dbservice.sossetlected();
 
                             iCursor3.moveToNext(); iCursor3.moveToNext();
@@ -221,7 +226,9 @@ public class ProfileActivity extends AppCompatActivity {
                                 dbservice.delsosuser(sosname1);
 
                         iCursor3.close();
+                        profile_reclick.callOnClick();
                         dbservice.close();
+                        update_end_btn.callOnClick();
                     }
                 });
                 //취소
@@ -239,14 +246,16 @@ public class ProfileActivity extends AppCompatActivity {
                 dig.setPositiveButton("삭제", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        dbservice.open();
                         Cursor iCursor3 = dbservice.sossetlected();
                         iCursor3.moveToLast();
                         String sosname1 = iCursor3.getString(0);
                         dbservice.delsosuser(sosname1);
 
                         iCursor3.close();
+                        profile_reclick.callOnClick();
                         dbservice.close();
+                        update_end_btn.callOnClick();
                     }
                 });
                 //취소
@@ -323,26 +332,61 @@ public class ProfileActivity extends AppCompatActivity {
                 sos_del_btn.setVisibility(View.VISIBLE);
             }
         });
-    }
 
-    public void profileme(){
-        dbservice = new DbService(this);
-        dbservice.open();
+        profile_reclick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dbservice.open();
 
-        final Cursor iCursor = dbservice.usersetlected();
-        if (iCursor.getCount() > 0){
-            while (iCursor.moveToNext()) {
-                profile_name.setText(String.format("이름 :   %s", iCursor.getString(0)));
-                profile_blood.setText(String.format("혈액형 :   %s", iCursor.getString(1)));
-                profile_age.setText(String.format("나이 :   %s", iCursor.getString(2)));
-                profile_stature.setText(String.format("키 :   %s", iCursor.getString(3)));
-                profile_weight.setText(String.format("몸무게 :  %s", iCursor.getString(4)));
-                profile_history.setText(String.format("특이사항 :   %s", iCursor.getString(5)));
+                final Cursor iCursor = dbservice.usersetlected();
+                if (iCursor.getCount() > 0){
+                    while (iCursor.moveToNext()) {
+                        profile_name.setText(String.format("이름 :   %s", iCursor.getString(0)));
+                        profile_blood.setText(String.format("혈액형 :   %s", iCursor.getString(1)));
+                        profile_age.setText(String.format("나이 :   %s", iCursor.getString(2)));
+                        profile_stature.setText(String.format("키 :   %s", iCursor.getString(3)));
+                        profile_weight.setText(String.format("몸무게 :  %s", iCursor.getString(4)));
+                        profile_history.setText(String.format("특이사항 :   %s", iCursor.getString(5)));
+                    }
+                }else{
+                    // profile_blood.setText("사용자 프로필 먼저 등록해 주세요");
+                }
+                iCursor.close();
+
+                final String s_name1, s_name2, s_name3, s_phone1, s_phone2, s_phone3, s_rethion1, s_rethion2, s_rethion3;
+                Cursor iCursor2 = dbservice.sossetlected();
+                if (iCursor2.getCount() > 0){
+                    while (iCursor2.moveToNext()) {
+                        s_name1 = iCursor2.getString(0);
+                        s_phone1 = iCursor2.getString(1);
+                        s_rethion1 = iCursor2.getString(2);
+                        sos_profile1.setText(String.format("1 : %s %s %s", s_name1, s_phone1, s_rethion1));
+                        sos_profile2.setText("");
+                        sos_profile3.setText("");
+                        break;
+                    }
+                    while (iCursor2.moveToNext()){
+                        s_name2 = iCursor2.getString(0);
+                        s_phone2 = iCursor2.getString(1);
+                        s_rethion2 = iCursor2.getString(2);
+                        sos_profile2.setText(String.format("2 : %s %s %s", s_name2, s_phone2, s_rethion2));
+                        sos_profile3.setText("");
+                        break;
+                    }
+                    while (iCursor2.moveToNext()){
+                        s_name3 = iCursor2.getString(0);
+                        s_phone3 = iCursor2.getString(1);
+                        s_rethion3 = iCursor2.getString(2);
+                        sos_profile3.setText(String.format("3 : %s %s %s", s_name3, s_phone3, s_rethion3));
+                        break;
+                    }
+                }else{
+                    // profile_blood.setText("사용자 프로필 먼저 등록해 주세요");
+                }
+
+                iCursor2.close();
+                dbservice.close();
             }
-        }else{
-            // profile_blood.setText("사용자 프로필 먼저 등록해 주세요");
-        }
-        iCursor.close();
-        dbservice.close();
+        });
     }
 }

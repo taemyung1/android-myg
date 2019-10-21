@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SettingActivity extends AppCompatActivity {
 
+
     private DbService dbservice;
     Button finish_btn, delete_btn, setting_btn2;
 
@@ -45,10 +46,11 @@ public class SettingActivity extends AppCompatActivity {
                 dig.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(SettingActivity.this, "확인 처리",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SettingActivity.this, "사용자 프로필를 초기화 했습니다",Toast.LENGTH_SHORT).show();
                         dbservice.open();
                         dbservice.dropuser();
                         dbservice.close();
+                        MainActivity.reclick.callOnClick();
                     }
                 });
 

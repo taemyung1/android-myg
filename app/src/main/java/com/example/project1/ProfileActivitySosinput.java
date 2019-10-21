@@ -39,6 +39,7 @@ public class ProfileActivitySosinput  extends AppCompatActivity {
 
                 try {
                     dbservice.sosIn(name, 0+phone, relation);
+                    ProfileActivity.profile_reclick.callOnClick();
                     dbservice.close();
                     finish();
                 }catch (Exception e){
