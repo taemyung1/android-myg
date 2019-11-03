@@ -193,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SensingActivity.class);
                 startActivity(intent);
+                Toast.makeText(getApplicationContext(), "디바이스를 터치하여 블루투스 연결해주세요!", Toast.LENGTH_SHORT).show();
             }
         });
         // 프로필 확인 시작화면

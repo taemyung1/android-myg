@@ -40,7 +40,7 @@ public class SensingActivity extends AppCompatActivity {
 
     public bluetoothService bthService;
     TextView mTvBluetoothStatus, mTvReceiveData, mTvSendData;
-    Button mBtnConnect;
+    Button mBtnConnect, finish_btn1;
     ImageButton mBtnSendData;
 
     //블루투스 모듈 사용을 위한 오브젝트
@@ -90,8 +90,9 @@ public class SensingActivity extends AppCompatActivity {
 
         // mTvBluetoothStatus = (TextView)findViewById(R.id.tvBluetoothStatus);
         mTvReceiveData = (TextView)findViewById(R.id.tvReceiveData);
-        // mTvSendData =  (EditText) findViewById(R.id.tvSendData);
+        mTvSendData =  (EditText) findViewById(R.id.tvSendData);
         mBtnConnect = (Button)findViewById(R.id.btnConnect);
+        finish_btn1 = (Button)findViewById(R.id.finish_btn1);
         mBtnSendData = (ImageButton) findViewById(R.id.btnSendData);
 
 
@@ -103,6 +104,13 @@ public class SensingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mListPairedDevices();
+            }
+        });
+
+        finish_btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
        /* mBtnSendData.setOnClickListener(new Button.OnClickListener() {
@@ -197,6 +205,11 @@ public class SensingActivity extends AppCompatActivity {
             mThreadConnectedBluetooth = new ConnectedBluetoothThread(mBluetoothSocket);
             mThreadConnectedBluetooth.start();
             mBluetoothHandler.obtainMessage(BT_CONNECTING_STATUS, 1, -1).sendToTarget();
+            Toast.makeText(getApplicationContext(), "블루투스 연결되었습니다.", Toast.LENGTH_SHORT).show();
+            if(mThreadConnectedBluetooth != null) {
+                mThreadConnectedBluetooth.write(mTvSendData.getText().toString());
+                mTvSendData.setText("");
+            }
         } catch (IOException e) {
             Toast.makeText(getApplicationContext(), "블루투스 연결 중 오류가 발생했습니다.", Toast.LENGTH_LONG).show();
         }

@@ -53,14 +53,28 @@
         app:layout_constraintStart_toStartOf="@+id/btnConnect"
         app:layout_constraintTop_toBottomOf="@+id/btnConnect" />
 
+    <EditText
+        android:id="@+id/tvSendData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Send Data"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/btnSendData"
+        app:layout_constraintTop_toTopOf="@+id/btnSendData" />
 
     <TextView
         android:id="@+id/tvReceiveData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:visibility="invisible"
+        android:text="Receive"
+        android:layout_gravity="center"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="@+id/btnSendData"
-        app:layout_constraintTop_toBottomOf="@+id/btnSendData" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSendData"  />
 
 </LinearLayout>
