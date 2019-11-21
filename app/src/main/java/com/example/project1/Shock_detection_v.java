@@ -65,12 +65,12 @@ public class Shock_detection_v extends AppCompatActivity {
         }
         Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         String provider = location.getProvider();
-        double longitude = location.getLongitude();
-        double latitude = location.getLatitude();
+        double longitude = GpsActivity.location.getLongitude();
+        double latitude = GpsActivity.location.getLatitude();
         double altitude = location.getAltitude();
         sendtext1 += "확인바랍니다. \n ";
         sendtext1 += "위도 :"+latitude+"\n 경도 :"+longitude+"\n 고도 :"+altitude +"\n"+
-                    "https://maps.google.com/maps?f=q&q=("+latitude+","+longitude+")";
+                    "https://www.google.com/maps?f=q&q=("+latitude+","+longitude+")";
 
 
         iCursor = dbservice.sossetlected();

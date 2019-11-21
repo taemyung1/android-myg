@@ -2,7 +2,7 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/proflie_pul_backg"
+    android:background="@drawable/userb"
     android:stretchColumns="0,1,2,3"
     android:orientation="vertical"
     android:padding="60dp">

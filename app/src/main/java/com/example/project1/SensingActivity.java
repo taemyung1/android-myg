@@ -33,8 +33,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-import static com.example.project1.bluetoothService.BT_MESSAGE_READ;
-import static com.example.project1.bluetoothService.BT_REQUEST_ENABLE;
 
 public class SensingActivity extends AppCompatActivity {
 

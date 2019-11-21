@@ -63,9 +63,10 @@ public class ProfileActivity extends AppCompatActivity {
 
         // 첫 번째 Tab. (탭 표시 텍스트:"TAB 1"), (페이지 뷰:"content1")
         TabHost.TabSpec ts1 = tabHost1.newTabSpec("Tab Spec 1") ;
+
         ts1.setContent(R.id.content1) ;
         ts1.setIndicator("사용자");
-        tabHost1.addTab(ts1)  ;
+        tabHost1.addTab(ts1);
 
         dbservice = new DbService(this);
         dbservice.open();

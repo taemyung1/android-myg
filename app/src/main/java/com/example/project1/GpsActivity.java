@@ -48,6 +48,7 @@ public class GpsActivity extends AppCompatActivity
         implements OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback{
 
 
+    public static Location location;
     private GoogleMap mGoogleMap = null;
     private Marker currentMarker = null;
 
@@ -72,7 +73,7 @@ public class GpsActivity extends AppCompatActivity
 
     private FusedLocationProviderClient mFusedLocationClient;
     private LocationRequest locationRequest;
-    private Location location;
+
 
 
     private View mLayout;  // Snackbar 사용하기 위해서는 View가 필요합니다.
